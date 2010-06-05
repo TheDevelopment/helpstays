@@ -1,0 +1,35 @@
+html, body {background: #ccffff;
+      padding: 0px;
+      margin: 0px;
+      height: 100%;
+   }
+#content {
+    padding-top:0px;
+    margin-top:0px;
+    padding: auto !important;
+    margin: auto !important;
+    width: 1024px; 
+    height: 100%;
+    background: #99ffff url('/images/background/dome.png') no-repeat center top}
+
+#pillow {
+  padding-left: 45%;
+  padding-top: 9%;
+  padding-bottom: 3%;
+}
+
+#text {
+  text-align: center;
+  padding-top:5%;
+}
+
+#buttons {
+  text-align: center;
+}
+
+#blurb {
+  text-align:center;
+  padding:2%;
+}
+
+

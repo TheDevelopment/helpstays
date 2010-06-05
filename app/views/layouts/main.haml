@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %link{ :rel => "shortcut icon", :href => "/favicon.ico", :type => "image/x-icon"}/
+    %title= "Welcome"
+    = stylesheet_link_tag "main"
+
+  %body
+    %div#content
+      - if flash[:error] || flash[:notice]
+        = "<div class='notice'>#{flash[:error]}</div>" if flash[:error]
+        = "<div class='notice'>#{flash[:notice]}</div>" if flash[:notice]
+      = @content_for_layout
+
+
