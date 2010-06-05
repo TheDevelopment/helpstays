@@ -5,3 +5,18 @@
 #   
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
+
+
+houses  = [{  
+              :address_1    => "34 Leahy Cls", 
+              :address_2    => nil, 
+              :country      => "Australia", 
+              :state        => "ACT", 
+              :post_code    => 2604, 
+              :suburb       => "Narrabundah"
+          }]
+          
+# lat = -35.344187
+# long = 149.141668
+          
+Houses.create(houses)

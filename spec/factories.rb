@@ -10,15 +10,17 @@ Factory.define :user do |u|
    u.password_confirmation 'test123'
 end
 
+
 Factory.define :house do |h|
   h.user_id               {(User.find(:first) || Factory(:user)).id}
-  h.address_1             "123 Fake St"
-  h.address_2             "Suite 2A"
+  h.address_1             "34 Leahy Cls"
+  h.address_2             nil
   h.country               "Australia"
-  h.post_code             "2010"
-  h.suburb                "Surry Hills"
-  h.lat                   "1"
-  h.long                  "2"
+  h.state                 "ACT"
+  h.post_code             2604 
+  h.suburb                "Narrabundah"
+  h.lat                   nil
+  h.long                  nil
 end
 
 Factory.define :organisation_type do |t|
