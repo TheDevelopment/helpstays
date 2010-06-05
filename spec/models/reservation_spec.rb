@@ -28,6 +28,17 @@ describe Reservation do
     @bed.house.beds.should have(6).records
     @organisation.find_beds({:start_date => 1.day.ago,
                               :end_date => 1.day.since,
-                              :number_of_beds => 1}).should have(5).records
+                              :beds => 1}).should have(1).records
+  end
+
+  it "should return the number of beds asked for" do
+    5.times {
+      a = @bed.house.beds.create!()
+      a.organisation_types << OrganisationType.first
+    }
+    @bed.house.beds.should have(6).records
+    @organisation.find_beds({:start_date => 1.day.ago,
+                              :end_date => 1.day.since,
+                              :beds => 5}).should have(5).records
   end
 end
