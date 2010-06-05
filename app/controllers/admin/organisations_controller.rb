@@ -1,6 +1,7 @@
 class Admin::OrganisationsController < AdminController
   access_rule "admin"
   active_scaffold :organisation do |config|
+    config.actions.exclude :nested
     config.columns  = [:name, :active, :user]
   end
   

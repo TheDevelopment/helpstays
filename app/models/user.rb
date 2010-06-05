@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
     write_attribute :email, (value ? value.downcase : nil)
   end
 
+  def to_label
+    login
+  end
+
   protected
     
     def make_activation_code

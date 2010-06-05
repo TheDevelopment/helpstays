@@ -43,3 +43,19 @@ body {
 
 .login_box {border: 1px solid #33cccc; width: 33%; margin: auto !important}
 
+#nav {
+  background-color: #ffff66;
+  padding:5px;
+  border-bottom: 1px solid #999999;
+  }
+
+#nav a{
+  font-weight: bold;
+  color: #999999;
+}
+
+#nav a:visited{
+  font-weight: bold;
+  color: #333333;
+}
+
