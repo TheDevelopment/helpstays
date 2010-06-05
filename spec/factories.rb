@@ -21,8 +21,12 @@ Factory.define :house do |h|
   h.long                  "2"
 end
 
+Factory.define :organisation_type do |t|
+  t.name "NGO"
+end
+
 Factory.define :organisation do |o|
-  o.name                {Factory.sequence(:name)}
+  o.name                {Factory.next(:name)}
   o.user_id             {(User.find(:first) || Factory(:user)).id}
 end
 
