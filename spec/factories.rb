@@ -30,9 +30,17 @@ end
 Factory.define :organisation do |o|
   o.name                {Factory.next(:name)}
   o.user_id             {(User.find(:first) || Factory(:user)).id}
+  o.organisation_type_id{(OrganisationType.find(:first) || Factory(:organisation_type)).id}
 end
 
 Factory.define :bed do |b|
   b.house_id              {(House.find(:first) || Factory(:house)).id}
+end
+
+Factory.define :reservation do |r|
+  r.start_date          {Time.now}
+  r.end_date            {Time.now}
+  r.organisation_id     {(Organisation.find(:first) || Factory(:organisation)).id}
+  r.bed_id              {(Bed.find(:first) || Factory(:bed)).id}
 end
 
