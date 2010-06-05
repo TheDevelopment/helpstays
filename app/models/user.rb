@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_many :roles_users, :dependent => :delete_all
   has_many :roles, :through => :roles_users
   has_many :houses
-  has_one :organisation
+  has_many :organisations
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

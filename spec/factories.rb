@@ -44,3 +44,7 @@ Factory.define :reservation do |r|
   r.bed_id              {(Bed.find(:first) || Factory(:bed)).id}
 end
 
+Factory.define :role do |r|
+  r.name "organisation"
+end
+

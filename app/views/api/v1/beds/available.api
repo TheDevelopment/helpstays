@@ -1,0 +1,18 @@
+xml.instruct! :xml, :version => "1.0" 
+
+xml.beds(:organisation => @organisation.name) do
+  @beds.each do |b|
+    xml.bed do
+      xml.owner_name(b.house.user.name)
+      xml.phone_number(b.house.user.phone_number)
+      xml.address_1(b.house.address_1)
+      xml.address_2(b.house.address_2)
+      xml.suburb(b.house.suburb)
+      xml.state(b.house.state)
+      xml.post_code(b.house.post_code)
+      xml.country(b.house.country)
+      xml.latitude(b.house.lat)
+      xml.longitude(b.house.long)
+    end
+  end
+end

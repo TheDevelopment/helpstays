@@ -1,0 +1,25 @@
+DasherizingBuilder
+==================
+
+Uses dashes instead of underscores when building XML.
+ - useful if you want to use ActiveRecord's to_xml as well.
+ - useful when you have a library which uses the dasherized convention to parse your XML.
+
+This is a plugin because Rails won't load it in production as a library...
+and since I use it in multiple projects now, it's much easier!
+
+Original source code is by Adam Pearson!
+http://blog.martiandesigns.com/2008/10/29/dasherizing-builderxmlmarkup-in-rails/
+
+I just made it a plugin.
+
+Enjoy :)
+
+
+Example
+=======
+
+Just use a view file using .xml.api instead of .builder
+
+
+Copyright (c) 2009 Damien Le Berrigaud, released under the MIT license
