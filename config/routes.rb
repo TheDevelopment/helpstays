@@ -8,7 +8,12 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resource :session
 
+  map.namespace :admin do |admin|
+    admin.resource :main
+  end
+
   map.home '/', :controller => "main", :action => "index"
+  map.admin_home '/admin', :controller => "admin/mains", :action => "index"
 
   # The priority is based upon order of creation: first created -> highest priority.
 

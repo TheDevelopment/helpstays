@@ -1,0 +1,14 @@
+- form_tag admin_main_path do
+  %p
+    = label_tag 'login'
+    %br/
+    = text_field_tag 'login', @login
+  %p
+    = label_tag 'password'
+    %br/
+    = password_field_tag 'password', nil
+  /
+    Uncomment this if you want this functionality
+    <p><haml:loud> label_tag 'remember_me', 'Remember me' </haml:loud>
+    <haml:loud> check_box_tag 'remember_me', '1', @remember_me </haml:loud></p>
+  %p= submit_tag 'Log in'

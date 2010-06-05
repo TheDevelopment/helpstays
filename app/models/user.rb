@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::AasmRoles
 
+  has_many :roles_users, :dependent => :delete_all
+  has_many :roles, :through => :roles_users
+  has_many :houses
+  has_one :organisation
+
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40
   validates_uniqueness_of   :login

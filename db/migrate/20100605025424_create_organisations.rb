@@ -4,6 +4,7 @@ class CreateOrganisations < ActiveRecord::Migration
       t.column :user_id,              :integer
       t.column :name,                 :string
       t.column :organisation_type_id, :integer
+      t.column :active,               :boolean, :default => false
     end
 
     create_table "beds" do |t|
