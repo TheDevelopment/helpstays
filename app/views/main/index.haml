@@ -5,8 +5,8 @@
   = image_tag "logo/pillow.png"
 
 #buttons
-  = image_tag "buttons/donate.png"
-  = image_tag "buttons/ngo.png"
+  = link_to(image_tag("buttons/donate.png"), signup_path)
+  = link_to(image_tag("buttons/ngo.png"), organisation_signup_path)
 
 #blurb
   = image_tag "logo/blurb.png"

@@ -3,6 +3,9 @@ html, body {background: #ccffff;
       margin: 0px;
       height: 100%;
    }
+
+img {border:none}
+
 #content {
     padding-top:0px;
     margin-top:0px;
