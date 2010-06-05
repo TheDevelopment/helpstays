@@ -1,0 +1,15 @@
+development:
+  adapter: mysql
+  database: helpstays_development
+  username: root
+  password: password
+  host: localhost
+  port: 3306
+ 
+test:
+  adapter: mysql
+  database: helpstays_test
+  username: root
+  password: password
+  host: localhost
+  port: 3306
