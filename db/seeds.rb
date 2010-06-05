@@ -19,4 +19,4 @@ houses  = [{
 # lat = -35.344187
 # long = 149.141668
           
-Houses.create(houses)
+House.create(houses)
