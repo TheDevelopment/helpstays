@@ -14,6 +14,15 @@ describe Bed do
     @bed.house.should be_present
   end
 
+  it "should have many organisation_types" do
+    @bed.organisation_types << Factory(:organisation_type)
+    @bed.organisation_types.should be_present
+  end
+
+  it "should have no organisation_types when none are entered" do
+    @bed.organisation_types.should be_blank
+  end
+
   it "should have many reservations" do
     @bed.reservations.create!(:start_date => Time.now, 
                              :end_date => 1.week.since,

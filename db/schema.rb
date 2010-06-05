@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20100605033911) do
     t.integer "house_id"
   end
 
-  create_table "beds_organisation_types", :force => true do |t|
+  create_table "beds_for_organisations", :force => true do |t|
     t.integer "organisation_type_id"
     t.integer "bed_id"
   end
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(:version => 20100605033911) do
   create_table "organisations", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
-    t.integer "type_id"
+    t.integer "organisation_type_id"
   end
 
   create_table "reservations", :force => true do |t|
