@@ -1,0 +1,22 @@
+xml.instruct! :xml, :version => "1.0" 
+
+xml.beds(:organisation => @organisation.name) do
+    xml.bed do
+      xml.owner_name(@klass_results.house.user.name)
+      xml.phone_number(@klass_results.house.user.phone_number)
+      xml.address_1(@klass_results.house.address_1)
+      xml.address_2(@klass_results.house.address_2)
+      xml.suburb(@klass_results.house.suburb)
+      xml.state(@klass_results.house.state)
+      xml.post_code(@klass_results.house.post_code)
+      xml.country(@klass_results.house.country)
+      xml.latitude(@klass_results.house.lat)
+      xml.longitude(@klass_results.house.long)
+      xml.reservations do
+        @klass_results.reservations do |r|
+        xml.start_date(r.start_date)
+        xml.end_date(r.end_date)
+        end
+      end
+    end
+end

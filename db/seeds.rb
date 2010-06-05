@@ -66,6 +66,7 @@ house = admin.houses.create(houses)
 5.times {
   a = house.first.beds.create!
   a.organisation_types << for_profit
+  a.organisation_types << not_for_profit
 
   a = house.last.beds.create!
   a.organisation_types << not_for_profit

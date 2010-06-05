@@ -2,10 +2,14 @@ Factory.sequence :name do |n|
   "Name_#{n}"
 end
 
+Factory.sequence :email do |n|
+  "test_#{n}@eggandjam.com"
+end
+
 Factory.define :user do |u|
    u.name                  'test login'
-   u.login                 'test_login'
-   u.email                 'test@eggandjam.com'
+   u.login                 {Factory.next(:name)}
+   u.email                 {Factory.next(:email)}
    u.password              'test123'
    u.password_confirmation 'test123'
 end

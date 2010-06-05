@@ -18,11 +18,7 @@ class Api::V1::ApiController < ApplicationController
   # GET /products/1.json
   def show
     @klass_results = @klass.find(params[:id])
-
-    respond_to do |format|
-      format.xml  {render :xml  => @klass_results}
-      format.json {render :json => @klass_results}
-    end
+    @current_user
 
   rescue ActiveRecord::RecordNotFound
     render :nothing => true, :status => :not_found
@@ -131,6 +127,7 @@ class Api::V1::ApiController < ApplicationController
   def authenticate_with_role(role)
     authenticate_or_request_with_http_basic do |username, password|
       @current_user = User.authenticate(username, password)
+      @organisation = @current_user.organisations.first
       has_permission?(role, @current_user)
     end
   end

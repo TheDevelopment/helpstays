@@ -5,6 +5,7 @@ require File.expand_path(File.join(File.dirname(__FILE__),'..','config','environ
 require 'spec/autorun'
 require 'spec/rails'
 require 'factory_girl'
+require File.expand_path(File.dirname(__FILE__) + "/crud_controller_matchers")
 
 
 # Uncomment the next line to use webrat's matchers

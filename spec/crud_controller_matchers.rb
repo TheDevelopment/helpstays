@@ -19,15 +19,28 @@ module CrudSetup
   end
 
   def setup_auth
-    @request.env["HTTP_AUTHORIZATION"] = ActionController::HttpAuthentication::Basic.encode_credentials("admin", 'secret')
+    user = Factory(:user)
+    bp_rep = Factory(:user)
+    bp = bp_rep.organisations.create!(:name => "BP")
+
+    for_profit = OrganisationType.create!(:name => "for profit")
+    not_for_profit = OrganisationType.create!(:name => "not for profit")
+
+    bp.organisation_type = for_profit
+    bp.save!
+
+    organisation = Role.find_or_create_by_title("organisation")
+    bp_rep.roles << organisation
+    user.houses << Factory(:house)
+
+    5.times {
+      a = user.houses.first.beds.create!()
+      a.organisation_types << not_for_profit
+    }
+
+    @request.env["HTTP_AUTHORIZATION"] = ActionController::HttpAuthentication::Basic.encode_credentials(bp_rep.login, 'test123')
   end
 
-  def truncate_crud_tables
-    Product.find(:all).collect{|x| Product.delete(x.id) if x && x.id}
-    Channel.find(:all).collect{|x| Channel.delete(x.id) if x && x.id}
-    Event.find(:all).collect{|x| Event.delete(x.id) if x && x.id}
-    Keyword.find(:all).collect{|x| Keyword.delete(x.id) if x && x.id}
-  end
 end
 
 describe "CRUD GET index", :shared => true do
@@ -41,6 +54,7 @@ describe "CRUD GET index", :shared => true do
   end
 
   it "should be successful" do
+    debugger
     do_get
     response.should be_success
   end
