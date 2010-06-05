@@ -32,17 +32,17 @@ ActiveRecord::Schema.define(:version => 20100605033911) do
     t.float   "long"
   end
 
-  create_table "organistations", :force => true do |t|
+  create_table "organisation_types", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "organisations", :force => true do |t|
     t.integer "user_id"
     t.string  "name"
     t.integer "type_id"
   end
 
-  create_table "organistion_types", :force => true do |t|
-    t.string "name"
-  end
-
-  create_table "reservation", :force => true do |t|
+  create_table "reservations", :force => true do |t|
     t.datetime "start_date"
     t.datetime "end_date"
     t.integer  "bed_id"

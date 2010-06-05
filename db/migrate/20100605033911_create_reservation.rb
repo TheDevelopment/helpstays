@@ -1,6 +1,6 @@
 class CreateReservation < ActiveRecord::Migration
   def self.up
-    create_table "reservation" do |t|
+    create_table "reservations" do |t|
       t.column :start_date, :datetime
       t.column :end_date,   :datetime
       t.column :bed_id,     :integer
@@ -9,6 +9,6 @@ class CreateReservation < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table "reservation"
+    drop_table "reservations"
   end
 end
