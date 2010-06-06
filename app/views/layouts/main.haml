@@ -7,6 +7,7 @@
 
   %body
     %div#content
+      = render :partial => "shared/admin/header"
       - if flash[:error] || flash[:notice]
         = "<div class='notice'>#{flash[:error]}</div>" if flash[:error]
         = "<div class='notice'>#{flash[:notice]}</div>" if flash[:notice]

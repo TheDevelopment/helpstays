@@ -9,9 +9,9 @@ class Organisation < ActiveRecord::Base
   end
 
   def find_beds(options = {})
-    start_date = options[:start_date] || Date.today
-    end_date = options[:end_date] || Date.today
-    single_day = options[:day]
+    start_date = options[:start_date]
+    end_date = options[:end_date]
+    single_day = options[:single_day]
     number_of_beds = options[:beds] || 1
     lat = options[:latitude]
     long = options[:longitude]
@@ -19,8 +19,8 @@ class Organisation < ActiveRecord::Base
     return false unless ((start_date && end_date) || single_day)
 
     if (start_date && end_date).blank?
-      start_date = single_date.to_date
-      end_date = single_date.to_date
+      start_date = single_day.to_date
+      end_date = single_day.to_date
     end
 
     if lat && long && radius
@@ -28,13 +28,13 @@ class Organisation < ActiveRecord::Base
       beds_found = houses_found.map(&:beds).flatten
       bed_ids_found = beds_found.map(&:id)
 
-      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ? AND bed_id in (?)", end_date, start_date, bed_ids_found], :limit => number_of_beds)
+      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ? AND bed_id in (?)", end_date, start_date, bed_ids_found])
     else
-      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ?", end_date, start_date], :limit => number_of_beds)
+      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ?", end_date, start_date])
       beds_found = beds
     end
 
-    beds_found - taken_reservations.map(&:bed)
+    (beds_found - taken_reservations.map(&:bed))[0...number_of_beds.to_i]
   end
 
   def reserve_bed(options = {})
@@ -42,12 +42,12 @@ class Organisation < ActiveRecord::Base
 
     start_date = options[:start_date] || Date.today
     end_date = options[:end_date] || Date.today
-    single_day = options[:day]
+    single_day = options[:single_day]
     return false unless ((start_date && end_date) || single_day)
 
     if (start_date && end_date).blank?
-      start_date = single_date.to_date
-      end_date = single_date.to_date
+      start_date = single_day.to_date
+      end_date = single_day.to_date
     end
 
     bed = beds.select{|x| x.id == bed_id.to_i}.first

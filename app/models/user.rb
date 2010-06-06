@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :roles_users
   has_many :houses
   has_many :organisations
+  has_many :beds, :through => :houses, :source => :beds
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

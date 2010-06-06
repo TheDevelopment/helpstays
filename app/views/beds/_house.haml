@@ -1,0 +1,7 @@
+%h3
+  .bed_number= house.beds.length
+  beds available at 
+  .street_address= "#{house.address_1}, #{house.country}"
+
+%p Reserved:
+= render :partial => "bed", :collection => house.beds

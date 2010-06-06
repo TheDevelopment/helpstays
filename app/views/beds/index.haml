@@ -1,0 +1,6 @@
+%h2
+  Welcome in 
+  = current_user.name
+You have beds available at:
+#houses_and_beds
+  = render :partial => "house", :collection => @houses

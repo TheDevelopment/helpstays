@@ -14,8 +14,8 @@ class Bed < ActiveRecord::Base
     return false unless ((start_date && end_date) || single_day)
 
     if (start_date && end_date).blank?
-      start_date = single_date
-      end_date = single_date 
+      start_date = single_day
+      end_date = single_day 
     end
 
     results = reservations.find(:all, 
@@ -31,11 +31,11 @@ class Bed < ActiveRecord::Base
   def reserve(options = {})
     start_date = options[:start_date] || Time.now
     end_date = options[:end_date] || Time.now
-    single_day = options[:day]
+    single_day = options[:single_day]
 
     if (start_date && end_date).blank?
-      start_date = single_date
-      end_date = single_date 
+      start_date = single_day.to_date
+      end_date = single_day.to_date
     end
 
     organisation_id = options[:organisation_id]

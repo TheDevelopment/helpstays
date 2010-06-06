@@ -8,12 +8,13 @@ class Api::V1::BedsController < Api::V1::ApiController
     @beds = @organisation.find_beds({
       :start_date => params[:start_date],
       :end_date   => params[:end_date],
-      :day        => params[:day],
+      :single_day => params[:single_day],
       :beds       => params[:beds],
       :latitude   => params[:latitude],
       :longitude  => params[:longitude],
       :radius     => params[:radius],
       })
+      render :nothing => true, :status => :no_content unless @beds.present?
   end
 
   def reserve_beds
@@ -22,7 +23,7 @@ class Api::V1::BedsController < Api::V1::ApiController
       @organisation.reserve_bed({
         :start_date => params[:start_date],
         :end_date   => params[:end_date],
-        :day        => params[:day],
+        :single_day => params[:single_day],
         :bed_id    => bed_id})
     end
 
