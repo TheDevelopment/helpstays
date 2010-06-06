@@ -1,0 +1,16 @@
+development:
+  :enable_starttls_auto: true
+  :address: smtp.gmail.com
+  :port: 587
+  :domain: helpstays.org
+  :authentication: plain
+  :user_name: support@helpstays.org
+  :password: 95T842
+production:
+  :enable_starttls_auto: true
+  :address: smtp.gmail.com
+  :port: 587
+  :domain: helpstays.org
+  :authentication: plain
+  :user_name: support@helpstays.org
+  :password: 95T842

@@ -1,7 +1,6 @@
-html, body {background: #ccffff;
+html, body {background: #99ccff;
       padding: 0px;
       margin: 0px;
-      height: 100%;
    }
 
 img {border:none}
@@ -11,28 +10,29 @@ img {border:none}
     margin-top:0px;
     padding: auto !important;
     margin: auto !important;
-    width: 1024px; 
-    height: 100%;
-    background: #99ffff url('/images/background/dome.png') no-repeat center top}
-
-#pillow {
-  padding-left: 45%;
-  padding-top: 9%;
-  padding-bottom: 3%;
 }
-
-#text {
-  text-align: center;
-  padding-top:5%;
-}
-
-#buttons {
-  text-align: center;
-}
-
-#blurb {
+#signup {
   text-align:center;
-  padding:2%;
+  width: 30%;
+  margin: auto !important;
+  border: 1px solid #33cccc;
+  background-color: white;
+  -moz-border-radius-topleft:20px;
+  -moz-border-radius-topright:20px;
+  -moz-border-radius-bottomleft:20px;
+  -moz-border-radius-bottomright:20px;
+}
+#signup label {
+  padding-left:10px;
+  float:left;
+  padding-left: 20%;
+  font: 16px/16px arial,sans-serif;
+}
+
+h1 {
+  font: bold 36px/36px arial,sans-serif;
+  padding-left:20%;
+  color: #333333;
 }
 
 

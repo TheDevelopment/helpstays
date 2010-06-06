@@ -14,4 +14,35 @@
   = label_tag 'password_confirmation', 'Confirm Password'
   %br/
   = f.password_field :password_confirmation
-
+%p
+  = label_tag 'name'
+  %br/
+  = f.text_field :name
+%p
+  = label_tag 'phone_number'
+  %br/
+  = f.text_field :phone_number
+%p
+  = label_tag 'address_1', 'Address'
+  %br/
+  = text_field_tag "house[address_1]", nil, :size => 30
+%p
+  = label_tag 'address_2', 'Address 2'
+  %br/
+  = text_field_tag "house[address_2]", nil, :size => 30
+%p
+  = label_tag 'suburb', 'Suburb'
+  %br/
+  = text_field_tag "house[suburb]", nil, :size => 30
+%p
+  = label_tag 'state', 'State'
+  %br/
+  = text_field_tag "house[state]", nil, :size => 30
+%p
+  = label_tag 'post_code', 'Post Code'
+  %br/
+  = text_field_tag "house[post_code]", nil, :size => 30
+%p
+  = label_tag 'country', 'Country'
+  %br/
+  = text_field_tag "house[country]", nil, :size => 30

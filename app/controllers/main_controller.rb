@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  layout "main"
+  layout "splash"
 
   def index
   end

@@ -23,9 +23,11 @@ else
     admin.save!
 
   bp_rep = User.create!(
-    :login      => "bp_rep",
-    :email      => "bp_rep@eggandjam.com",
-    :password   => "test123",
+    :name         => "John Doe",
+    :phone_number => "123 4567",
+    :login        => "bp_rep",
+    :email        => "bp_rep@eggandjam.com",
+    :password     => "test123",
     :password_confirmation => "test123")
 
     bp_rep.state = "active"

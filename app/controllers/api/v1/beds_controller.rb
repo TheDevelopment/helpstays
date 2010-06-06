@@ -9,7 +9,7 @@ class Api::V1::BedsController < Api::V1::ApiController
       :start_date => params[:start_date],
       :end_date   => params[:end_date],
       :day        => params[:day],
-      :beds       => params[:start_date],
+      :beds       => params[:beds],
       :latitude   => params[:latitude],
       :longitude  => params[:longitude],
       :radius     => params[:radius],
