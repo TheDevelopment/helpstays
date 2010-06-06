@@ -4,4 +4,39 @@
   = error_messages_for :user
   - form_for :user, :url => users_path do |f|
     = render :partial => 'shared/new', :locals => {:f => f}
+    %p
+      = label_tag 'address_1', 'Address'
+      %br/
+      = text_field_tag "house[address_1]", nil, :size => 30
+    %p
+      = label_tag 'address_2', 'Address 2'
+      %br/
+      = text_field_tag "house[address_2]", nil, :size => 30
+    %p
+      = label_tag 'suburb', 'Suburb'
+      %br/
+      = text_field_tag "house[suburb]", nil, :size => 30
+    %p
+      = label_tag 'state', 'State'
+      %br/
+      = text_field_tag "house[state]", nil, :size => 30
+    %p
+      = label_tag 'post_code', 'Post Code'
+      %br/
+      = text_field_tag "house[post_code]", nil, :size => 30
+    %p
+      = label_tag 'country', 'Country'
+      %br/
+      = text_field_tag "house[country]", nil, :size => 30
+    %p
+      = label_tag 'number_of_beds'
+      = select_tag 'beds[number]', options_for_select((1..5).each { |x| [x, x] })
+    %p
+      = label_tag 'Permitted Organisations'
+      %br/
+      %ul.select_organisation
+        - OrganisationType.all.each do |ot|
+          %li
+            = check_box_tag 'organisation_type_ids[]', ot.id
+            = h ot.name
     %p= submit_tag 'Sign up'
