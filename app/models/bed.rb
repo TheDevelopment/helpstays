@@ -27,4 +27,22 @@ class Bed < ActiveRecord::Base
   def taken?(options = {})
     !free(options)
   end
+
+  def reserve(options = {})
+    start_date = options[:start_date] || Time.now
+    end_date = options[:end_date] || Time.now
+    single_day = options[:day]
+
+    if (start_date && end_date).blank?
+      start_date = single_date
+      end_date = single_date 
+    end
+
+    organisation_id = options[:organisation_id]
+
+    if free?({:start_date => start_date, :end_date => end_date})
+      return true if reservations.create!(:start_date => start_date, :end_date => end_date, :organisation_id => organisation_id)
+    end
+    return false
+  end
 end

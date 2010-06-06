@@ -16,8 +16,16 @@ class Api::V1::BedsController < Api::V1::ApiController
       })
   end
 
-  def book_beds
-    date_range = params[:date_range]
-    bed_ids = params[:bed_ids]
+  def reserve_beds
+    @organisation = @current_user.organisations.first
+    params[:bed_ids].each do |bed_id|
+      @organisation.reserve_bed({
+        :start_date => params[:start_date],
+        :end_date   => params[:end_date],
+        :day        => params[:day],
+        :bed_id    => bed_id})
+    end
+
+    render :nothing => true, :status => :ok
   end
 end

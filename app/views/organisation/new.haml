@@ -1,15 +1,15 @@
-%h1 Sign up as a new user
+%h1 Sign up as a new organisation
 #signup
-- @user.password = @user.password_confirmation = nil
-= error_messages_for :user
-- form_for :user, :url => users_path do |f|
-  = render :partial => 'shared/new', :locals => {:f => f}
-  %p
-    = label_tag 'organisation_name'
-    %br/
-    = text_field_tag "organisation[name]", nil, :size => 30
-  %p
-    = label_tag 'organisation_type'
-    %br/
-    = select_tag 'organisation_type_id', options_for_select(OrganisationType.all.each {|x| [x.name, x.id]})
-  %p= submit_tag 'Sign up'
+  - @user.password = @user.password_confirmation = nil
+  = error_messages_for :user
+  - form_for :user, :url => {:controller => :organisation, :action => :create}do |f|
+    = render :partial => 'shared/new', :locals => {:f => f}
+    %p
+      = label_tag 'organisation_name'
+      %br/
+      = text_field_tag "organisation[name]", nil, :size => 30
+    %p
+      = label_tag 'organisation_type'
+      %br/
+      = select_tag 'organisation[organisation_type_id]', options_for_select(OrganisationType.all.collect {|x| [x.name, x.id]})
+    %p= submit_tag 'Sign up'

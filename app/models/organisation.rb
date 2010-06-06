@@ -17,6 +17,11 @@ class Organisation < ActiveRecord::Base
     long = options[:longitude]
     radius = options[:radius]
 
+    if (start_date && end_date).blank?
+      start_date = single_date
+      end_date = single_date 
+    end
+
     if lat && long && radius
       houses_found = House.find(:all, :origin =>[lat, long], :within => radius, :include => :beds)
       beds_found = houses_found.map(&:beds).flatten
@@ -29,6 +34,28 @@ class Organisation < ActiveRecord::Base
     end
 
     beds_found - taken_reservations.map(&:bed)
+  end
+
+  def reserve_bed(options = {})
+    bed_id = options[:bed_id]
+
+    start_date = options[:start_date] || Time.now
+    end_date = options[:end_date] || Time.now
+    single_day = options[:day]
+
+    if (start_date && end_date).blank?
+      start_date = single_date
+      end_date = single_date 
+    end
+
+    bed = beds.select{|x| x.id == bed_id}.first
+    reserve_success = bed.reserve({start_date => start_date, :end_date => end_date, :organisation_id => self.id}) if bed
+
+    if reserve_success
+      return true
+    else
+      return false
+    end
   end
 
 
