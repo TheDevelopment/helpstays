@@ -48,7 +48,7 @@ class Organisation < ActiveRecord::Base
       end_date = single_date 
     end
 
-    bed = beds.select{|x| x.id == bed_id}.first
+    bed = beds.select{|x| x.id == bed_id.to_i}.first
     reserve_success = bed.reserve({start_date => start_date, :end_date => end_date, :organisation_id => self.id}) if bed
 
     if reserve_success
