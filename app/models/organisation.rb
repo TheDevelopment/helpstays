@@ -9,17 +9,18 @@ class Organisation < ActiveRecord::Base
   end
 
   def find_beds(options = {})
-    start_date = options[:start_date] || Time.now
-    end_date = options[:end_date] || Time.now
+    start_date = options[:start_date] || Date.today
+    end_date = options[:end_date] || Date.today
     single_day = options[:day]
     number_of_beds = options[:beds] || 1
     lat = options[:latitude]
     long = options[:longitude]
     radius = options[:radius]
+    return false unless ((start_date && end_date) || single_day)
 
     if (start_date && end_date).blank?
-      start_date = single_date
-      end_date = single_date 
+      start_date = single_date.to_date
+      end_date = single_date.to_date
     end
 
     if lat && long && radius
@@ -39,13 +40,14 @@ class Organisation < ActiveRecord::Base
   def reserve_bed(options = {})
     bed_id = options[:bed_id]
 
-    start_date = options[:start_date] || Time.now
-    end_date = options[:end_date] || Time.now
+    start_date = options[:start_date] || Date.today
+    end_date = options[:end_date] || Date.today
     single_day = options[:day]
+    return false unless ((start_date && end_date) || single_day)
 
     if (start_date && end_date).blank?
-      start_date = single_date
-      end_date = single_date 
+      start_date = single_date.to_date
+      end_date = single_date.to_date
     end
 
     bed = beds.select{|x| x.id == bed_id.to_i}.first

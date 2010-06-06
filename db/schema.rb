@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(:version => 20100605133504) do
   end
 
   create_table "reservations", :force => true do |t|
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.integer  "bed_id"
-    t.integer  "organisation_id"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.integer "bed_id"
+    t.integer "organisation_id"
   end
 
   create_table "roles", :force => true do |t|
