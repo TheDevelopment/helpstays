@@ -28,9 +28,9 @@ class Organisation < ActiveRecord::Base
       beds_found = houses_found.map(&:beds).flatten
       bed_ids_found = beds_found.map(&:id)
 
-      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ? AND bed_id in (?)", end_date, start_date, bed_ids_found])
+      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ? AND bed_id in (?)", end_date, start_date, bed_ids_found], :limit => number_of_beds)
     else
-      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ?", end_date, start_date])
+      taken_reservations = reservations.find(:all, :conditions => ["start_date <= ? AND end_date >= ?", end_date, start_date], :limit => number_of_beds)
       beds_found = beds
     end
 
