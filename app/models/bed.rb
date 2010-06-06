@@ -19,7 +19,7 @@ class Bed < ActiveRecord::Base
     end
 
     results = reservations.find(:all, 
-                      :conditions => ["start_date <= ? && end_date >= ?", end_date, start_date])
+                      :conditions => ["start_date <= ? AND end_date >= ?", end_date, start_date])
     return results.blank?
 
   end
