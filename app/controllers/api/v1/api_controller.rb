@@ -1,7 +1,5 @@
 class Api::V1::ApiController < ApplicationController
   skip_before_filter :login_required
-  #before_filter :authentication_required
-  #before_filter :check_permissions
 
   # GET /products.json
   # GET /products.xml
