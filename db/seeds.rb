@@ -8,7 +8,6 @@
 
 
 
-
 admin = User.find_by_login("admin")
 if admin
   puts "Admin already exists"
@@ -54,6 +53,17 @@ else
 
     bp_rep.state = "active"
     bp_rep.save!
+
+  red_cross_rep = User.create!(
+    :name         => "Mary Jane",
+    :phone_number => "123 4567",
+    :login        => "red_cross_rep",
+    :email        => "red_cross_rep@eggandjam.com",
+    :password     => "test123",
+    :password_confirmation => "test123")
+
+    red_cross_rep.state = "active"
+    red_cross_rep.save!
 
     if admin
       puts "Admin account created"
@@ -120,6 +130,10 @@ else
   bp = bp_rep.organisations.create!(:name => "BP", :active => true)
   bp.organisation_type = for_profit
   bp.save!
+
+  rc = red_cross_rep.organisations.create!(:name => "Red Cross", :active => true)
+  rc.organisation_type = not_for_profit
+  rc.save!
 end
 
 
@@ -132,3 +146,4 @@ organisation = Role.find_by_title("organisation")
 organisation ||= Role.create!(:title => 'organisation')
 
 bp_rep.roles << organisation
+red_cross_rep.roles << organisation
