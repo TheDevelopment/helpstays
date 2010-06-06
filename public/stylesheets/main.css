@@ -35,4 +35,13 @@ h1 {
   color: #333333;
 }
 
+ul.select_organisation {
+  list-style-type: none;
+}
 
+ul.select_organisation li{
+  margin:0px;
+  padding:0px;
+  padding-left:50px;
+  text-align:left;
+}

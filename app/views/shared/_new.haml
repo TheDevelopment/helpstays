@@ -46,3 +46,14 @@
   = label_tag 'country', 'Country'
   %br/
   = text_field_tag "house[country]", nil, :size => 30
+%p
+  = label_tag 'number_of_beds'
+  = select_tag 'beds[number]', options_for_select((1..5).each { |x| [x, x] })
+%p
+  = label_tag 'Permitted Organisations'
+  %br/
+  %ul.select_organisation
+    - OrganisationType.all.each do |ot|
+      %li
+        = check_box_tag 'organisation_type_ids[]', ot.id
+        = h ot.name

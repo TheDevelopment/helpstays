@@ -3,6 +3,7 @@ xml.instruct! :xml, :version => "1.0"
 xml.beds(:organisation => @organisation.name) do
   @beds.each do |b|
     xml.bed do
+      xml.bed_id(b.id)
       xml.owner_name(b.house.user.name)
       xml.phone_number(b.house.user.phone_number)
       xml.address_1(b.house.address_1)
