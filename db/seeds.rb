@@ -22,6 +22,28 @@ else
     admin.state = "active"
     admin.save!
 
+  volunteer_1 = User.create!(
+    :login        => "JulianG1",
+    :name         => "Julian G",
+    :phone_number => "123 456",
+    :email        => "julian1@eggandjam.com",
+    :password     => "test123",
+    :password_confirmation => "test123")
+
+    volunteer_1.state = "active"
+    volunteer_1.save!
+
+  volunteer_2 = User.create!(
+    :login        => "JulianG2",
+    :name         => "Julian G",
+    :phone_number => "123 456",
+    :email        => "julian2@eggandjam.com",
+    :password     => "test123",
+    :password_confirmation => "test123")
+
+    volunteer_2.state = "active"
+    volunteer_2.save!
+
   bp_rep = User.create!(
     :name         => "John Doe",
     :phone_number => "123 4567",
@@ -63,7 +85,7 @@ houses  = [{
 for_profit = OrganisationType.create!(:name => "for profit")
 not_for_profit = OrganisationType.create!(:name => "not for profit")
 
-house = admin.houses.create(houses)
+house = volunteer_1.houses.create(houses)
 
 5.times {
   a = house.first.beds.create!
@@ -71,6 +93,23 @@ house = admin.houses.create(houses)
   a.organisation_types << not_for_profit
 
   a = house.last.beds.create!
+  a.organisation_types << not_for_profit
+}
+
+
+houses  = [{  
+  :address_1    => "35 Riccarton Road",
+  :address_2    => nil, 
+  :country      => "New Zealand", 
+  :state        => "Christchurch", 
+  :post_code    => 8011, 
+  :suburb       => "Riccarton"
+}]
+
+house = volunteer_2.houses.create(houses)
+
+3.times {
+  a = house.first.beds.create!
   a.organisation_types << not_for_profit
 }
 
