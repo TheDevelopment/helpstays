@@ -25,12 +25,14 @@ class UsersController < ApplicationController
     if success && @user.errors.empty? && house.errors.empty?
       @user.save!
       house.save!
-      params[:beds][:number].to_i.times {
-        bed = house.beds.create!()
-        params[:organisation_type_ids].each do |oti|
-          bed.organisation_types << OrganisationType.find(oti)
-        end
-      }
+      if params[:beds]
+        params[:beds][:number].to_i.times {
+          bed = house.beds.create!()
+          params[:organisation_type_ids].each do |oti|
+            bed.organisation_types << OrganisationType.find(oti)
+          end
+        }
+      end
       redirect_back_or_default('/')
       flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
     else

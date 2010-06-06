@@ -88,7 +88,16 @@ describe UsersController do
   
   def create_user(options = {})
     post :create, :user => { :login => 'quire', :email => 'quire@example.com',
-      :password => 'quire69', :password_confirmation => 'quire69' }.merge(options)
+      :password => 'quire69', :password_confirmation => 'quire69' }.merge(options),
+      :house => 
+    {
+      :address_1 =>             "34 Leahy Cls",
+      :address_2 =>             nil,
+      :country =>               "Australia",
+      :state =>                 "ACT",
+      :post_code =>             2604,
+      :suburb =>                "Narrabundah"
+    }
   end
 end
 

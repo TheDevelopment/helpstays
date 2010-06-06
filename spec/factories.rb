@@ -23,8 +23,6 @@ Factory.define :house do |h|
   h.state                 "ACT"
   h.post_code             2604 
   h.suburb                "Narrabundah"
-  h.lat                   nil
-  h.long                  nil
 end
 
 Factory.define :organisation_type do |t|

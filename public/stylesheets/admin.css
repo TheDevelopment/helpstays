@@ -42,6 +42,11 @@ body {
 }
 
 .login_box {border: 1px solid #999999; width: 33%; margin: auto !important;
+  -webkit-border-top-left-radius: 20px 20px;
+  -webkit-border-top-right-radius: 20px 20px;
+  -webkit-border-bottom-left-radius: 20px 20px;
+  -webkit-border-bottom-right-radius: 20px 20px;
+  
   -moz-border-radius-topleft:20px;
   -moz-border-radius-topright:20px;
   -moz-border-radius-bottomleft:20px;

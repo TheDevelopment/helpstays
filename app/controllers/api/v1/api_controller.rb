@@ -127,8 +127,10 @@ class Api::V1::ApiController < ApplicationController
   def authenticate_with_role(role)
     authenticate_or_request_with_http_basic do |username, password|
       @current_user = User.authenticate(username, password)
-      @organisation = @current_user.organisations.first
-      has_permission?(role, @current_user)
+      if @current_user
+        @organisation = @current_user.organisations.first
+        has_permission?(role, @current_user)
+      end
     end
   end
 end
