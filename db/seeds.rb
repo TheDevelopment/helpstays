@@ -23,10 +23,10 @@ else
     admin.save!
 
   volunteer_1 = User.create!(
-    :login        => "JulianG1",
-    :name         => "Julian G",
+    :login        => "ksmith",
+    :name         => "Kevin Smith",
     :phone_number => "123 456",
-    :email        => "julian1@eggandjam.com",
+    :email        => "ksmith@eggandjam.com",
     :password     => "test123",
     :password_confirmation => "test123")
 
@@ -34,10 +34,10 @@ else
     volunteer_1.save!
 
   volunteer_2 = User.create!(
-    :login        => "JulianG2",
-    :name         => "Julian G",
+    :login        => "janedoe",
+    :name         => "Jane Doe",
     :phone_number => "123 456",
-    :email        => "julian2@eggandjam.com",
+    :email        => "janedoe@eggandjam.com",
     :password     => "test123",
     :password_confirmation => "test123")
 
